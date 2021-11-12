@@ -1,19 +1,35 @@
-import { Button } from "@mui/material";
 import React from "react";
-import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
-import UploadProducts from "../../Admin/UploadProducts/UploadProducts";
+import Footer from "../../Shared/Footer/Footer";
 import Navigation from "../../Shared/Navigation/Navigation";
+import Banner from "../Banner/Banner";
+import BeautyAdvice from "../BeautyAdvice/BeautyAdvice";
 import Products from "../Products/Products";
-import ShowAllProducts from "../ShowAllProducts/ShowAllProducts";
+import UserReviews from "../UserReviews/UserReviews";
+
 const Home = () => {
-  let { path, url } = useRouteMatch();
-  console.log(path, url);
   return (
-    <Navigation>
-      <Link to={url}>
-        <Button color="inherit">show all</Button>
-      </Link>
-      <Link to={`${url}/dashboard`}>
+    <>
+      <Navigation />
+      <Banner />
+      <Products />
+      <UserReviews />
+      <BeautyAdvice />
+
+      <Footer />
+    </>
+  );
+};
+
+export default Home;
+
+/**import { useRouteMatch } from "react-router-dom";
+ 
+
+let { path, url } = useRouteMatch();
+
+*/
+
+/*<Link to={`${url}/dashboard`}>
         <Button color="inherit">Dashboard</Button>
       </Link>
       <Products />
@@ -24,9 +40,4 @@ const Home = () => {
         <Route exact path={path}>
           <ShowAllProducts />
         </Route>
-      </Switch>
-    </Navigation>
-  );
-};
-
-export default Home;
+      </Switch>*/

@@ -5,6 +5,7 @@ import {
   CircularProgress,
   Container,
   Grid,
+  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
@@ -18,8 +19,16 @@ const Register = () => {
   // const {registerUser}= useAuth
   const history = useHistory();
 
+  const [open, setOpen] = useState(false);
   const { registerUser, loading, user, authError } = useAuth();
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -100,9 +109,18 @@ const Register = () => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <img src="" alt="" style={{ width: "100%" }} />
+          <img
+            src="https://shop.shajgoj.com/wp-content/uploads/2020/11/Clariss-Pomace-Olive-Oil-%E2%80%93-Tin-135-ml-750x750.jpg"
+            alt=""
+            style={{ width: "100%" }}
+          />
         </Grid>
       </Grid>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          Product Uploaded Successfully
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };
